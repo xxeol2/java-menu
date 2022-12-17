@@ -5,6 +5,7 @@ import static menu.domain.Menu.convertToMenus;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import menu.exception.menu.WrongMenuNameException;
 
 public enum Category {
@@ -14,6 +15,7 @@ public enum Category {
     ASIAN(4, "아시안", "팟타이, 카오 팟, 나시고렝, 파인애플 볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜"),
     WESTERN(5, "양식", "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니");
 
+    private static java.util.Collections Collections;
     private int index;
     private String name;
     private List<Menu> menus;
@@ -39,8 +41,8 @@ public enum Category {
                 .orElseThrow(WrongMenuNameException::new);
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    public List<String> getMenuNames() {
+        return menus.stream().map(Menu::getName).collect(Collectors.toList());
     }
 
     public static List<Menu> getTotalMenu() {
@@ -48,7 +50,7 @@ public enum Category {
         for (Category category : values()) {
             totalMenu.addAll(category.menus);
         }
-        return totalMenu;
+        return java.util.Collections.unmodifiableList(totalMenu);
     }
 
     @Override

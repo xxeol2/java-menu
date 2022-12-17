@@ -27,7 +27,7 @@ class MenuRecommenderTest {
         Coach coach = initCoach();
         Category category = getRandomCategory();
         Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
-        assertThat(category.getMenus().contains(menu)).isTrue();
+        assertThat(category.getMenuNames().contains(menu.getName())).isTrue();
     }
 
     @RepeatedTest(10)
