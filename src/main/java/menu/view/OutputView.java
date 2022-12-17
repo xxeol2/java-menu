@@ -1,6 +1,6 @@
 package menu.view;
 
-import menu.Coach;
+import menu.domain.Coach;
 
 public class OutputView {
 

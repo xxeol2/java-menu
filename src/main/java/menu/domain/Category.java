@@ -1,6 +1,6 @@
-package menu;
+package menu.domain;
 
-import static menu.Menu.convertToMenus;
+import static menu.domain.Menu.convertToMenus;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package menu;
+package menu.domain;
 
 import static menu.validator.CoachValidator.validateCoachName;
 

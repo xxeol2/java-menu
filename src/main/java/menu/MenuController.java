@@ -2,6 +2,8 @@ package menu;
 
 import java.util.List;
 import java.util.function.Supplier;
+import menu.domain.Coach;
+import menu.domain.Menu;
 import menu.view.InputView;
 import menu.view.OutputView;
 

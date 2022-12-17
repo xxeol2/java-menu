@@ -7,9 +7,9 @@ import static menu.validator.MenuValidator.validateHateMenu;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import menu.Category;
-import menu.Coach;
-import menu.Menu;
+import menu.domain.Category;
+import menu.domain.Coach;
+import menu.domain.Menu;
 
 public class InputView {
 
