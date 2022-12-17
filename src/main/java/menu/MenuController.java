@@ -24,7 +24,7 @@ public class MenuController {
         outputView.printStartProgram();
         List<Coach> coaches = repeat(this::inputCoaches);
         inputCoachesHateMenus(coaches);
-        List<Category> categories = recommendCategories(coaches);
+        List<Category> categories = recommend(coaches);
         outputView.printRecommendResult(categories, coaches);
     }
 
@@ -37,7 +37,7 @@ public class MenuController {
         }
     }
 
-    private List<Category> recommendCategories(List<Coach> coaches) {
+    private List<Category> recommend(List<Coach> coaches) {
         List<Category> categories = new ArrayList<>();
         for (int i = 0; i < getDayOfWeek().size(); i++) {
             Category category = categoryRecommender.pickOneCategory(categories);
