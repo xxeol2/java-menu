@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Menu {
@@ -12,6 +14,14 @@ public class Menu {
 
     public static Menu of(String name) {
         return new Menu(name);
+    }
+
+    public static List<Menu> convertToMenus(String menuNames) {
+        List<Menu> menus = new ArrayList<>();
+        for (String menuName : menuNames.split(", ")) {
+            menus.add(Menu.of(menuName));
+        }
+        return menus;
     }
 
     @Override
