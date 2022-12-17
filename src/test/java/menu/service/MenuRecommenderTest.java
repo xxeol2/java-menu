@@ -19,7 +19,7 @@ class MenuRecommenderTest {
 
     @BeforeEach
     void beforeEach() {
-        menuRecommender = new MenuRecommender();
+        menuRecommender = new RandomMenuRecommender();
     }
 
     @RepeatedTest(10)

@@ -14,7 +14,7 @@ class CategoryRecommenderTest {
 
     @BeforeEach
     void beforeEach() {
-        categoryRecommender = new CategoryRecommender();
+        categoryRecommender = new RandomCategoryRecommender();
     }
 
 

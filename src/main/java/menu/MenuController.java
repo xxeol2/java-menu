@@ -17,8 +17,14 @@ public class MenuController {
 
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
-    private final CategoryRecommender categoryRecommender = new CategoryRecommender();
-    private final MenuRecommender menuRecommender = new MenuRecommender();
+    private final CategoryRecommender categoryRecommender;
+    private final MenuRecommender menuRecommender;
+
+    public MenuController(CategoryRecommender categoryRecommender,
+            MenuRecommender menuRecommender) {
+        this.categoryRecommender = categoryRecommender;
+        this.menuRecommender = menuRecommender;
+    }
 
     public void play() {
         outputView.printStartProgram();
