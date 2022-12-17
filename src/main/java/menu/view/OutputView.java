@@ -8,6 +8,7 @@ import menu.domain.Menu;
 
 public class OutputView {
 
+    public static final String START_PROGRAM = "점심 메뉴 추천을 시작합니다.\n";
     public static final String INPUT_COACH_NAMES = "코치의 이름을 입력해 주세요. (, 로 구분)";
     public static final String INPUT_HATE_MENUS = "(이)가 못 먹는 메뉴를 입력해 주세요.";
     public static final String RECOMMEND_RESULT = "메뉴 추천 결과입니다.";
@@ -19,6 +20,10 @@ public class OutputView {
     public static final String DELIMITER = " | ";
     public static final List<String> daysOfWeek = List.of("월요일", "화요일", "수요일", "목요일", "금요일");
 
+    public void printStartProgram() {
+        System.out.println(START_PROGRAM);
+    }
+    
     public void printInputCoachNames() {
         System.out.println(INPUT_COACH_NAMES);
     }

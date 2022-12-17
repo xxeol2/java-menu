@@ -19,6 +19,7 @@ public class MenuController {
 
     // TODO: 리팩터링(메서드로 빼기)
     public void play() {
+        outputView.printStartProgram();
         List<Coach> coaches = repeat(this::inputCoaches);
         for (Coach coach : coaches) {
             List<Menu> menus = repeat(() -> inputHateMenus(coach));
