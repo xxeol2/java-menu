@@ -30,6 +30,7 @@ public class MenuController {
         for (Coach coach : coaches) {
             coach.setRecommendedMenus(menuRecommender.recommendMenuForCoach(coach, categories));
         }
+        outputView.printRecommendResult(categories, coaches);
     }
 
     private List<Coach> inputCoaches() {
