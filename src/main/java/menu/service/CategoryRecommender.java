@@ -37,6 +37,6 @@ public class CategoryRecommender {
 
     private boolean isValidCategory(Category category) {
         long count = recommendedCategories.stream().filter(c -> c.equals(category)).count();
-        return count <= SAME_CATEGORY_MAX_COUNT;
+        return count < SAME_CATEGORY_MAX_COUNT;
     }
 }
