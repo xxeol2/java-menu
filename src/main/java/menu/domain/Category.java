@@ -25,7 +25,6 @@ public enum Category {
     }
 
     public static Category getCategoryByIndex(int index) {
-        // TODO: 에러처리
         return Arrays.stream(values())
                 .filter(c -> c.index == index)
                 .findFirst()
