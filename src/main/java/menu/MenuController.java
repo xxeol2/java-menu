@@ -18,26 +18,34 @@ public class MenuController {
     private final CategoryRecommender categoryRecommender = new CategoryRecommender();
     private final MenuRecommender menuRecommender = new MenuRecommender();
 
-    // TODO: 리팩터링(메서드로 빼기)
     public void play() {
         outputView.printStartProgram();
         List<Coach> coaches = repeat(this::inputCoaches);
+        inputCoachesHateMenus(coaches);
+        List<Category> categories = recommendCategories(coaches);
+        outputView.printRecommendResult(categories, coaches);
+    }
+
+    private void inputCoachesHateMenus(List<Coach> coaches) {
         for (Coach coach : coaches) {
             List<Menu> menus = repeat(() -> inputHateMenus(coach));
             if (menus != null) {
                 coach.setHateMenus(menus);
             }
         }
-        List<Category> recommendedCategory = new ArrayList<>();
+    }
+
+    private List<Category> recommendCategories(List<Coach> coaches) {
+        List<Category> categories = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            Category category = categoryRecommender.pickOneCategory(recommendedCategory);
+            Category category = categoryRecommender.pickOneCategory(categories);
             for (Coach coach : coaches) {
                 Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
                 coach.addRecommendMenu(menu);
             }
-            recommendedCategory.add(category);
+            categories.add(category);
         }
-        outputView.printRecommendResult(recommendedCategory, coaches);
+        return categories;
     }
 
     private List<Coach> inputCoaches() {
