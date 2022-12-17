@@ -1,5 +1,8 @@
 package menu.view;
 
+
+import static menu.constant.DayOfWeek.getDayOfWeek;
+
 import java.util.ArrayList;
 import java.util.List;
 import menu.domain.Category;
@@ -18,12 +21,11 @@ public class OutputView {
     public static final String LEFT_BRACKET = "[ ";
     public static final String RIGHT_BRACKET = " ]";
     public static final String DELIMITER = " | ";
-    public static final List<String> daysOfWeek = List.of("월요일", "화요일", "수요일", "목요일", "금요일");
 
     public void printStartProgram() {
         System.out.println(START_PROGRAM);
     }
-    
+
     public void printInputCoachNames() {
         System.out.println(INPUT_COACH_NAMES);
     }
@@ -47,7 +49,7 @@ public class OutputView {
     private void printDivisions() {
         List<String> divisions = new ArrayList<>();
         divisions.add(DIVISION);
-        divisions.addAll(daysOfWeek);
+        divisions.addAll(getDayOfWeek());
         System.out.println(joinWords(divisions));
     }
 

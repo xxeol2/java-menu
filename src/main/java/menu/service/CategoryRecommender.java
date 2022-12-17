@@ -9,7 +9,6 @@ import menu.domain.Category;
 public class CategoryRecommender {
 
     private static final int SAME_CATEGORY_MAX_COUNT = 2;
-    private static final int DAY_NUMBERS = 5;
 
     public Category pickOneCategory(List<Category> recommendedCategories) {
         Category category;

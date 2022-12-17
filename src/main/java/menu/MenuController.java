@@ -1,5 +1,7 @@
 package menu;
 
+import static menu.constant.DayOfWeek.getDayOfWeek;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
@@ -37,7 +39,7 @@ public class MenuController {
 
     private List<Category> recommendCategories(List<Coach> coaches) {
         List<Category> categories = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < getDayOfWeek().size(); i++) {
             Category category = categoryRecommender.pickOneCategory(categories);
             for (Coach coach : coaches) {
                 Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
