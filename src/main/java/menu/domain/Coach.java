@@ -26,7 +26,6 @@ public class Coach {
         return recommendedMenus.contains(menu);
     }
 
-    // TODO: 이것도 세터인가?
     public void setHateMenus(List<Menu> menus) {
         hateMenus.addAll(menus);
     }

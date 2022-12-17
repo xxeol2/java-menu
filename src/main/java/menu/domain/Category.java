@@ -33,7 +33,6 @@ public enum Category {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    // TODO: 레포지터리로 옮겨야할듯..
     public static Menu findMenuByName(String menuName) {
         List<Menu> totalMenu = getTotalMenu();
         return totalMenu.stream()
