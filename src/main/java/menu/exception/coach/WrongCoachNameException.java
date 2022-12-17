@@ -1,7 +1,9 @@
-package menu.exception;
+package menu.exception.coach;
 
 import static menu.validator.CoachValidator.COACH_NAME_MAX_LENGTH;
 import static menu.validator.CoachValidator.COACH_NAME_MIN_LENGTH;
+
+import menu.exception.BaseException;
 
 public class WrongCoachNameException extends BaseException {
 

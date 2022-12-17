@@ -3,9 +3,9 @@ package menu.validator;
 import static menu.validator.BaseValidator.verifyNameDistinction;
 
 import java.util.List;
-import menu.exception.CoachNameDuplicationException;
-import menu.exception.WrongCoachNameException;
-import menu.exception.WrongCoachNumberException;
+import menu.exception.coach.CoachNameDuplicationException;
+import menu.exception.coach.WrongCoachNameException;
+import menu.exception.coach.WrongCoachNumberException;
 
 public class CoachValidator {
 

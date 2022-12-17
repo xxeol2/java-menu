@@ -1,4 +1,6 @@
-package menu.exception;
+package menu.exception.coach;
+
+import menu.exception.BaseException;
 
 public class CoachNameDuplicationException extends BaseException {
 

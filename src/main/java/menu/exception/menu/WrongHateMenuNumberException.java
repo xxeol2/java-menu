@@ -1,7 +1,9 @@
-package menu.exception;
+package menu.exception.menu;
 
 import static menu.validator.MenuValidator.HATE_MENU_MAX_NUM;
 import static menu.validator.MenuValidator.HATE_MENU_MIN_NUM;
+
+import menu.exception.BaseException;
 
 public class WrongHateMenuNumberException extends BaseException {
 

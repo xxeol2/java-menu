@@ -3,8 +3,8 @@ package menu.validator;
 import static menu.validator.BaseValidator.verifyNameDistinction;
 
 import java.util.List;
-import menu.exception.MenuNameDuplicationException;
-import menu.exception.WrongHateMenuNumberException;
+import menu.exception.menu.MenuNameDuplicationException;
+import menu.exception.menu.WrongHateMenuNumberException;
 
 public class MenuValidator {
 

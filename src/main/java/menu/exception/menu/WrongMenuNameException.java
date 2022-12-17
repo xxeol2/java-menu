@@ -1,4 +1,6 @@
-package menu.exception;
+package menu.exception.menu;
+
+import menu.exception.BaseException;
 
 public class WrongMenuNameException extends BaseException {
 

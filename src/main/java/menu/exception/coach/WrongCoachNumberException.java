@@ -1,7 +1,9 @@
-package menu.exception;
+package menu.exception.coach;
 
 import static menu.validator.CoachValidator.COACH_MAX_NUM;
 import static menu.validator.CoachValidator.COACH_MIN_NUM;
+
+import menu.exception.BaseException;
 
 public class WrongCoachNumberException extends BaseException {
 
