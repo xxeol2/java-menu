@@ -22,13 +22,17 @@ public class Coach {
         return recommendedMenus;
     }
 
+    public boolean isAlreadyRecommended(Menu menu) {
+        return recommendedMenus.contains(menu);
+    }
+
     // TODO: 이것도 세터인가?
     public void setHateMenus(List<Menu> menus) {
         hateMenus.addAll(menus);
     }
 
-    public void setRecommendedMenus(List<Menu> menus) {
-        recommendedMenus.addAll(menus);
+    public void addRecommendMenu(Menu menu) {
+        recommendedMenus.add(menu);
     }
 
     public boolean isValidMenu(Menu menu) {

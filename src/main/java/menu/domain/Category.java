@@ -40,6 +40,10 @@ public enum Category {
                 .orElseThrow(WrongMenuNameException::new);
     }
 
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
     public static List<Menu> getTotalMenu() {
         List<Menu> totalMenu = new ArrayList<>();
         for (Category category : values()) {

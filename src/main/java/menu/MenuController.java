@@ -1,5 +1,6 @@
 package menu;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 import menu.domain.Category;
@@ -27,11 +28,16 @@ public class MenuController {
                 coach.setHateMenus(menus);
             }
         }
-        List<Category> categories = categoryRecommender.recommendCategories();
-        for (Coach coach : coaches) {
-            coach.setRecommendedMenus(menuRecommender.recommendMenuForCoach(coach, categories));
+        List<Category> recommendedCategory = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Category category = categoryRecommender.pickOneCategory(recommendedCategory);
+            for (Coach coach : coaches) {
+                Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
+                coach.addRecommendMenu(menu);
+            }
+            recommendedCategory.add(category);
         }
-        outputView.printRecommendResult(categories, coaches);
+        outputView.printRecommendResult(recommendedCategory, coaches);
     }
 
     private List<Coach> inputCoaches() {

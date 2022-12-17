@@ -1,9 +1,8 @@
 package menu.service;
 
-import static menu.domain.Category.getTotalMenu;
+import static camp.nextstep.edu.missionutils.Randoms.shuffle;
+import static menu.domain.Category.findMenuByName;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import menu.domain.Category;
@@ -12,24 +11,15 @@ import menu.domain.Menu;
 
 public class MenuRecommender {
 
-    public List<Menu> recommendMenuForCoach(Coach coach, List<Category> categories) {
-        List<Menu> recommendedMenus = new ArrayList<>();
-        List<Menu> totalMenu = getTotalMenu();
-        Menu menu;
-        // TODO: 리팩토링 (depth)
-        for (int i = 0; i < categories.size(); i++) {
-            do {
-                Category category = categories.get(i);
-                List<Menu> categoryMenus = totalMenu.stream().filter(m -> m.checkCategory(category))
-                        .collect(Collectors.toList());
-                menu = categoryMenus.get(Randoms.pickNumberInRange(0, categoryMenus.size() - 1));
-                if (!coach.isValidMenu(menu) || recommendedMenus.contains(menu)) {
-                    continue;
-                }
-                break;
-            } while (true);
-            recommendedMenus.add(menu);
+    public Menu recommendMenuForCoach(Coach coach, Category category) {
+        List<String> categoryMenus = category.getMenus().stream().map(Menu::getName)
+                .collect(Collectors.toList());
+        while (true) {
+            Menu menu = findMenuByName(shuffle(categoryMenus).get(0));
+            if (!coach.isValidMenu(menu) || coach.isAlreadyRecommended(menu)) {
+                continue;
+            }
+            return menu;
         }
-        return recommendedMenus;
     }
 }
