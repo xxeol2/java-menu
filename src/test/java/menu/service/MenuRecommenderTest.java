@@ -2,7 +2,8 @@ package menu.service;
 
 import static camp.nextstep.edu.missionutils.Randoms.shuffle;
 import static menu.domain.Category.getCategoryByIndex;
-import static menu.domain.Category.getTotalMenu;
+import static menu.repository.MenuRepository.findAllMenus;
+import static menu.repository.MenuRepository.findMenuNamesByCategory;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -27,7 +28,7 @@ class MenuRecommenderTest {
         Coach coach = initCoach();
         Category category = getRandomCategory();
         Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
-        assertThat(category.getMenuNames().contains(menu.getName())).isTrue();
+        assertThat(findMenuNamesByCategory(category).contains(menu.getName())).isTrue();
     }
 
     @RepeatedTest(10)
@@ -49,7 +50,7 @@ class MenuRecommenderTest {
 
     private Coach initCoach() {
         Coach coach = new Coach("설희");
-        List<Menu> shuffledMenu = shuffle(getTotalMenu());
+        List<Menu> shuffledMenu = shuffle(findAllMenus());
         coach.setHateMenus(List.of(shuffledMenu.get(0), shuffledMenu.get(1)));
         return coach;
     }

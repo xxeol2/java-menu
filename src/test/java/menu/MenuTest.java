@@ -1,6 +1,6 @@
 package menu;
 
-import static menu.domain.Category.findMenuByName;
+import static menu.repository.MenuRepository.findMenuByName;
 import static menu.validator.MenuValidator.validateHateMenu;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

@@ -22,6 +22,10 @@ public class Menu {
         return menus;
     }
 
+    public boolean checkCategory(Category category) {
+        return this.category.equals(category);
+    }
+
     public boolean checkMenuName(String menuName) {
         return this.name.equals(menuName);
     }

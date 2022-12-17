@@ -2,9 +2,9 @@ package menu.view;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import menu.domain.Category;
 import menu.domain.Coach;
 import menu.domain.Menu;
+import menu.repository.MenuRepository;
 
 public class InputConverter {
 
@@ -13,6 +13,7 @@ public class InputConverter {
     }
 
     public static List<Menu> convertToMenu(List<String> menuNames) {
-        return menuNames.stream().map(Category::findMenuByName).collect(Collectors.toList());
+        return menuNames.stream().map(MenuRepository::findMenuByName)
+                .collect(Collectors.toList());
     }
 }
