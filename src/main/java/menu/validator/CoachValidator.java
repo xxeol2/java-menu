@@ -1,5 +1,7 @@
 package menu.validator;
 
+import static menu.validator.BaseValidator.verifyNameDistinction;
+
 import java.util.List;
 import menu.exception.CoachNameDuplicationException;
 import menu.exception.WrongCoachNameException;
@@ -17,7 +19,7 @@ public class CoachValidator {
         if (!verifyCoachNumber(coachNames)) {
             throw new WrongCoachNumberException();
         }
-        if (coachNames.stream().distinct().count() != coachNames.size()) {
+        if (!verifyNameDistinction(coachNames)) {
             throw new CoachNameDuplicationException();
         }
     }

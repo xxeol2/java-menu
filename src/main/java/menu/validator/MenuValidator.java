@@ -1,5 +1,7 @@
 package menu.validator;
 
+import static menu.validator.BaseValidator.verifyNameDistinction;
+
 import java.util.List;
 import menu.exception.MenuNameDuplicationException;
 import menu.exception.WrongHateMenuNumberException;
@@ -13,13 +15,9 @@ public class MenuValidator {
         if (!verifyMenuNumber(menuNames)) {
             throw new WrongHateMenuNumberException();
         }
-        if (!verifyMenuNameDistinct(menuNames)) {
+        if (!verifyNameDistinction(menuNames)) {
             throw new MenuNameDuplicationException();
         }
-    }
-
-    private static boolean verifyMenuNameDistinct(List<String> menuNames) {
-        return menuNames.stream().distinct().count() == menuNames.size();
     }
 
     private static boolean verifyMenuNumber(List<String> menuNames) {
