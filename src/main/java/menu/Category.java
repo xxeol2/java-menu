@@ -2,7 +2,9 @@ package menu;
 
 import static menu.Menu.convertToMenus;
 
+import java.util.ArrayList;
 import java.util.List;
+import menu.exception.WrongMenuNameException;
 
 public enum Category {
     JAPANESE(1, "일식", "규동, 우동, 미소시루, 스시, 가츠동, 오니기리, 하이라이스, 라멘, 오코노미야끼"),
@@ -11,7 +13,6 @@ public enum Category {
     ASIAN(4, "아시안", "팟타이, 카오 팟, 나시고렝, 파인애플 볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜"),
     WESTERN(5, "양식", "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니");
 
-
     private int index;
     private String name;
     private List<Menu> menus;
@@ -19,11 +20,23 @@ public enum Category {
     Category(int index, String name, String menuNames) {
         this.index = index;
         this.name = name;
-        this.menus = convertToMenus(menuNames);
+        this.menus = convertToMenus(this, menuNames);
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    // TODO: 레포지터리로 옮겨야할듯..
+    public static Menu findMenuByName(String menuName) {
+        List<Menu> totalMenu = getTotalMenu();
+        return totalMenu.stream()
+                .filter(menu -> menu.checkMenuName(menuName)).findAny()
+                .orElseThrow(WrongMenuNameException::new);
+    }
+
+    public static List<Menu> getTotalMenu() {
+        List<Menu> totalMenu = new ArrayList<>();
+        for (Category category : values()) {
+            totalMenu.addAll(category.menus);
+        }
+        return totalMenu;
     }
 
     @Override

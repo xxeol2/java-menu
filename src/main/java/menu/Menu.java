@@ -6,22 +6,24 @@ import java.util.Objects;
 
 public class Menu {
 
+    private final Category category;
     private final String name;
 
-    public Menu(String name) {
+    public Menu(Category category, String name) {
+        this.category = category;
         this.name = name;
     }
 
-    public static Menu of(String name) {
-        return new Menu(name);
-    }
-
-    public static List<Menu> convertToMenus(String menuNames) {
+    public static List<Menu> convertToMenus(Category category, String menuNames) {
         List<Menu> menus = new ArrayList<>();
         for (String menuName : menuNames.split(", ")) {
-            menus.add(Menu.of(menuName));
+            menus.add(new Menu(category, menuName));
         }
         return menus;
+    }
+
+    public boolean checkMenuName(String menuName) {
+        return this.name.equals(menuName);
     }
 
     @Override
