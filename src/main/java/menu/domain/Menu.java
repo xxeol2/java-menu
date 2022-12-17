@@ -26,10 +26,6 @@ public class Menu {
         return this.name.equals(menuName);
     }
 
-    public boolean checkCategory(Category category) {
-        return this.category.equals(category);
-    }
-
     public String getName() {
         return name;
     }
