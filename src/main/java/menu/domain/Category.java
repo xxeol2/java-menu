@@ -3,6 +3,7 @@ package menu.domain;
 import static menu.domain.Menu.convertToMenus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import menu.exception.WrongMenuNameException;
 
@@ -21,6 +22,14 @@ public enum Category {
         this.index = index;
         this.name = name;
         this.menus = convertToMenus(this, menuNames);
+    }
+
+    public static Category getCategoryByIndex(int index) {
+        // TODO: 에러처리
+        return Arrays.stream(values())
+                .filter(c -> c.index == index)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     // TODO: 레포지터리로 옮겨야할듯..
