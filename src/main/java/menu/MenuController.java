@@ -12,11 +12,22 @@ public class MenuController {
 
     public void play() {
         List<Coach> coaches = repeat(this::inputCoaches);
+        for (Coach coach : coaches) {
+            List<Menu> menus = repeat(() -> inputHateMenus(coach));
+            if (menus != null) {
+                coach.setHateMenus(menus);
+            }
+        }
     }
 
     private List<Coach> inputCoaches() {
         outputView.printInputCoachNames();
         return inputView.readCoaches();
+    }
+
+    private List<Menu> inputHateMenus(Coach coach) {
+        outputView.printInputHateMenu(coach);
+        return inputView.readMenus();
     }
 
     private <T> T repeat(Supplier<T> inputReader) {
@@ -27,4 +38,5 @@ public class MenuController {
             return repeat(inputReader);
         }
     }
+
 }
