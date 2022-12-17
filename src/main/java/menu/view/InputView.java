@@ -3,11 +3,12 @@ package menu.view;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static menu.validator.CoachValidator.validateCoach;
 import static menu.validator.MenuValidator.validateHateMenu;
+import static menu.view.InputConverter.convertToCoach;
+import static menu.view.InputConverter.convertToMenu;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import menu.domain.Category;
 import menu.domain.Coach;
 import menu.domain.Menu;
 
@@ -16,7 +17,7 @@ public class InputView {
     public List<Coach> readCoaches() {
         List<String> coachNames = readWordsSeparatedByComma();
         validateCoach(coachNames);
-        return coachNames.stream().map(Coach::new).collect(Collectors.toList());
+        return convertToCoach(coachNames);
     }
 
     public List<Menu> readMenus() {
@@ -26,7 +27,7 @@ public class InputView {
         }
         List<String> menuNames = separateWordByComma(input);
         validateHateMenu(menuNames);
-        return menuNames.stream().map(Category::findMenuByName).collect(Collectors.toList());
+        return convertToMenu(menuNames);
     }
 
     private List<String> deleteBlanks(List<String> words) {
