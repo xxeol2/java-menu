@@ -1,6 +1,7 @@
 package menu.validator;
 
 import java.util.List;
+import menu.exception.CoachNameDuplicationException;
 import menu.exception.WrongCoachNameException;
 import menu.exception.WrongCoachNumberException;
 
@@ -12,9 +13,12 @@ public class CoachValidator {
     public static final int COACH_NAME_MAX_LENGTH = 4;
 
 
-    public static void validateCoachNumbers(List<String> coachNames) {
+    public static void validateCoach(List<String> coachNames) {
         if (!verifyCoachNumber(coachNames)) {
             throw new WrongCoachNumberException();
+        }
+        if (coachNames.stream().distinct().count() != coachNames.size()) {
+            throw new CoachNameDuplicationException();
         }
     }
 

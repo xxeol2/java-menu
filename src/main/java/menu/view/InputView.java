@@ -1,7 +1,7 @@
 package menu.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static menu.validator.CoachValidator.validateCoachNumbers;
+import static menu.validator.CoachValidator.validateCoach;
 import static menu.validator.MenuValidator.validateHateMenu;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class InputView {
 
     public List<Coach> readCoaches() {
         List<String> coachNames = readWordsSeparatedByComma();
-        validateCoachNumbers(coachNames);
+        validateCoach(coachNames);
         return coachNames.stream().map(Coach::new).collect(Collectors.toList());
     }
 
