@@ -3,13 +3,13 @@ package menu.service;
 import static camp.nextstep.edu.missionutils.Randoms.shuffle;
 import static menu.domain.Category.getCategoryByIndex;
 import static menu.domain.Category.getTotalMenu;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import menu.domain.Category;
 import menu.domain.Coach;
 import menu.domain.Menu;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 
@@ -27,7 +27,7 @@ class MenuRecommenderTest {
         Coach coach = initCoach();
         Category category = getRandomCategory();
         Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
-        Assertions.assertThat(category.getMenus().contains(menu)).isTrue();
+        assertThat(category.getMenus().contains(menu)).isTrue();
     }
 
     @RepeatedTest(10)
@@ -35,7 +35,16 @@ class MenuRecommenderTest {
         Coach coach = initCoach();
         Category category = getRandomCategory();
         Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
-        Assertions.assertThat(coach.isValidMenu(menu)).isTrue();
+        assertThat(coach.isValidMenu(menu)).isTrue();
+    }
+
+    @RepeatedTest(100)
+    void 이미_해당코치에게_추천된메뉴는_추천하지않는다() {
+        Coach coach = initCoach();
+        Category category = getRandomCategory();
+        Menu menu = menuRecommender.recommendMenuForCoach(coach, category);
+        coach.addRecommendMenu(menu);
+        assertThat(menuRecommender.recommendMenuForCoach(coach, category)).isNotEqualTo(menu);
     }
 
     private Coach initCoach() {
