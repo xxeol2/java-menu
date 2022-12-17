@@ -6,12 +6,8 @@ public class Coach {
 
     private final String name;
 
-    private Coach(String name) {
-        this.name = name;
-    }
-
-    public static Coach of(String name) {
+    public Coach(String name) {
         validateCoachName(name);
-        return new Coach(name);
+        this.name = name;
     }
 }
