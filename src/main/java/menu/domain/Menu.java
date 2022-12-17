@@ -26,6 +26,10 @@ public class Menu {
         return this.name.equals(menuName);
     }
 
+    public boolean checkCategory(Category category) {
+        return this.category.equals(category);
+    }
+
     @Override
     public String toString() {
         return name;

@@ -16,7 +16,7 @@ public class CategoryRecommender {
     private final List<Category> recommendedCategories = new ArrayList<>();
 
     public List<Category> recommendCategories() {
-        while (recommendedCategories.size() < DAY_NUMBERS) {
+        for (int i = 0; i < DAY_NUMBERS; i++) {
             pickOneCategory();
         }
         return recommendedCategories;

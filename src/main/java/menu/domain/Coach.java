@@ -9,15 +9,26 @@ public class Coach {
 
     private final String name;
     private List<Menu> hateMenus;
+    private List<Menu> recommendedMenus;
 
     public Coach(String name) {
         validateCoachName(name);
         this.name = name;
         this.hateMenus = new ArrayList<>();
+        this.recommendedMenus = new ArrayList<>();
     }
 
+    // TODO: 이것도 세터인가?
     public void setHateMenus(List<Menu> menus) {
         hateMenus.addAll(menus);
+    }
+
+    public void setRecommendedMenus(List<Menu> menus) {
+        recommendedMenus.addAll(menus);
+    }
+
+    public boolean isValidMenu(Menu menu) {
+        return !hateMenus.contains(menu);
     }
 
     @Override
